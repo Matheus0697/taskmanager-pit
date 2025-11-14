@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nova Tarefa - TaskManager</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <h1 class="logo">📝 TaskManager</h1>
+      <a href="/" class="btn btn-secondary">← Voltar</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="form-container">
+      <h2>Nova Tarefa</h2>
+      
+      <form method="POST" action="/store" class="task-form">
+        <div class="form-group">
+          <label for="titulo">Título *</label>
+          <input type="text" id="titulo" name="titulo" required maxlength="255" placeholder="Ex: Estudar Node.js">
+        </div>
+
+        <div class="form-group">
+          <label for="descricao">Descrição</label>
+          <textarea id="descricao" name="descricao" rows="4" placeholder="Descreva os detalhes da tarefa..."></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="prazo">Prazo *</label>
+          <input type="date" id="prazo" name="prazo" required>
+        </div>
+
+        <div class="form-actions">
+          <a href="/" class="btn btn-secondary">Cancelar</a>
+          <button type="submit" class="btn btn-primary">Salvar Tarefa</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 TaskManager</p>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

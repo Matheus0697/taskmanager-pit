@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Editar Tarefa - TaskManager</title>
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+  <nav class="navbar">
+    <div class="container">
+      <h1 class="logo">📝 TaskManager</h1>
+      <a href="/" class="btn btn-secondary">← Voltar</a>
+    </div>
+  </nav>
+
+  <main class="container">
+    <div class="form-container">
+      <h2>Editar Tarefa</h2>
+      
+      <form method="POST" action="/update/<%= task.id %>" class="task-form">
+        <div class="form-group">
+          <label for="titulo">Título *</label>
+          <input type="text" id="titulo" name="titulo" value="<%= task.titulo %>" required maxlength="255">
+        </div>
+
+        <div class="form-group">
+          <label for="descricao">Descrição</label>
+          <textarea id="descricao" name="descricao" rows="4"><%= task.descricao || '' %></textarea>
+        </div>
+
+        <div class="form-group">
+          <label for="prazo">Prazo *</label>
+          <input type="date" id="prazo" name="prazo" value="<%= task.prazo ? new Date(task.prazo).toISOString().split('T')[0] : '' %>" required>
+        </div>
+
+        <div class="form-info">
+          <p><strong>Status:</strong> <%= task.status %></p>
+          <p><strong>Criada em:</strong> <%= new Date(task.data_criacao).toLocaleString('pt-BR') %></p>
+        </div>
+
+        <div class="form-actions">
+          <a href="/" class="btn btn-secondary">Cancelar</a>
+          <button type="submit" class="btn btn-primary">Atualizar Tarefa</button>
+        </div>
+      </form>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <p>&copy; 2025 TaskManager</p>
+  </footer>
+
+  <script src="/js/main.js"></script>
+</body>
+</html>

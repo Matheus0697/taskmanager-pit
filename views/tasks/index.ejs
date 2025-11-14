@@ -1,0 +1,72 @@
+<h2>Painel de controle</h2>
+
+<div class="dashboard">
+  <div class="stat-card">
+    <h3>Total</h3>
+    <div class="stat-number"><%= stats.total %></div>
+  </div>
+
+  <div class="stat-card stat-warning">
+    <h3>Pendentes</h3>
+    <div class="stat-number"><%= stats.pendentes %></div>
+  </div>
+
+  <div class="stat-card stat-success">
+    <h3>Concluídas</h3>
+    <div class="stat-number"><%= stats.concluidas %></div>
+  </div>
+</div>
+
+<h2>Lista de Tarefas</h2>
+
+<% if (tasks.length === 0) { %>
+
+  <div class="empty-state">
+    <p>Nenhuma tarefa cadastrada.</p>
+    <a href="/create" class="btn btn-primary">Criar primeira tarefa</a>
+  </div>
+
+<% } else { %>
+
+  <div class="tasks-list">
+    <% tasks.forEach(task => { %>
+
+      <div class="task-card <%= task.status === 'Concluída' ? 'completed' : '' %>">
+        <div class="task-header">
+          <div class="task-title">
+            <% if (task.status === 'Concluída') { %>
+              <span class="checkmark">✔</span>
+            <% } %>
+            <%= task.titulo %>
+          </div>
+
+          <div class="task-status 
+            <%= task.status === 'Concluída' ? 'status-completed' : 'status-pending' %>">
+            <%= task.status %>
+          </div>
+        </div>
+
+        <div class="task-info">
+          <p class="task-description"><%= task.descricao %></p>
+          <p class="task-date">Prazo: <strong><%= task.prazo %></strong></p>
+        </div>
+
+        <div class="task-actions">
+          <a href="/edit/<%= task.id %>" class="btn btn-secondary btn-sm">Editar</a>
+
+          <% if (task.status !== 'Concluída') { %>
+            <form action="/complete/<%= task.id %>" method="POST">
+              <button class="btn btn-success btn-sm">Concluir</button>
+            </form>
+          <% } %>
+
+          <form action="/delete/<%= task.id %>" method="POST">
+            <button class="btn btn-danger btn-sm">Excluir</button>
+          </form>
+        </div>
+      </div>
+
+    <% }); %>
+  </div>
+
+<% } %>
