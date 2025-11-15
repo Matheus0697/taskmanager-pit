@@ -48,7 +48,7 @@
 
         <div class="task-info">
           <p class="task-description"><%= task.descricao %></p>
-          <p class="task-date">Prazo: <strong><%= task.prazo %></strong></p>
+          <p class="task-date">Prazo: <strong><%= new Date(task.prazo).toLocaleDateString('pt-BR') %></strong></p>
         </div>
 
         <div class="task-actions">
