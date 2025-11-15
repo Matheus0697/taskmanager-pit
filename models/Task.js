@@ -27,9 +27,9 @@ class Task {
 
   // Marcar como concluída
   static markAsCompleted(id, callback) {
-    const query = 'UPDATE tarefas SET status = "Concluída" WHERE id = ?';
-    db.query(query, [id], callback);
-  }
+    const query = 'UPDATE tarefas SET status = ? WHERE id = ?';
+    db.query(query, ['Concluída', id], callback);
+}
 
   // Excluir tarefa
   static delete(id, callback) {
